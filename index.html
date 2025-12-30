@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>الطائف للسباكة والكهرباء</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ====== إعادة تعيين كاملة ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            font-size: 16px;
+            height: 100%;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2d3748;
+            line-height: 1.5;
+            direction: rtl;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* ====== الألوان الأساسية ====== */
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff6b6b;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --light: #f8f9fa;
+            --dark: #2d3748;
+            --gray: #e9ecef;
+            --radius: 12px;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* ====== الحاوية الرئيسية ====== */
+        .app-container {
+            width: 100%;
+            min-height: 100vh;
+            max-width: 100%;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ====== الهيدر ====== */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(106, 17, 203, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2.8rem;
+            background: rgba(255,255,255,0.2);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .company-info h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .company-info p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .phone-number {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* ====== الأزرار الرئيسية ====== */
+        .buttons-container {
+            padding: 25px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        @media (max-width: 480px) {
+            .buttons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .main-button {
+            background: white;
+            border: none;
+            border-radius: var(--radius);
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .main-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .main-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .button-icon {
+            font-size: 2.2rem;
+            color: var(--primary);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            transition: var(--transition);
+        }
+
+        .main-button:hover .button-icon {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .button-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        /* ألوان الأزرار */
+        .electricity::before { background: linear-gradient(90deg, #6a11cb, #2575fc); }
+        .plumbing::before { background: linear-gradient(90deg, #36d1dc, #5b86e5); }
+        .installation::before { background: linear-gradient(90deg, #f7971e, #ffd200); }
+        .contact::before { background: linear-gradient(90deg, #2ecc71, #1abc9c); }
+        .rate-us::before { background: linear-gradient(90deg, #FFD700, #FFA500); }
+
+        /* ====== النوافذ المنبثقة ====== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: modalIn 0.4s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-content {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(85vh - 80px);
+        }
+
+        /* ====== المنتجات ====== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray);
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 120px;
+            background: linear-gradient(135deg, #f5f7fa, #e3e7f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image .icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+
+        .product-details {
+            padding: 12px;
+        }
+
+        .product-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+            line-height: 1.4;
+            height: 2.8em;
+            overflow: hidden;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .phone-btn {
+            background: var(--secondary);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* ====== معلومات المحل ====== */
+        .contact-info {
+            padding: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: var(--light);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            background: var(--gray);
+            transform: translateX(-5px);
+        }
+
+        .info-icon {
+            font-size: 1.3rem;
+            color: var(--primary);
+            background: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .info-text {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .map-placeholder {
+            margin-top: 20px;
+            background: linear-gradient(135deg, #f5f7fa, #e3e7f1);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px dashed var(--gray);
+        }
+
+        .map-placeholder:hover {
+            background: linear-gradient(135deg, #e3e7f1, #d5dce8);
+            border-color: var(--primary);
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            opacity: 0.7;
+        }
+
+        /* ====== الفوتر ====== */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .footer-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .footer-text {
+            color: #adb5bd;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            color: #6c757d;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            margin-top: 20px;
+        }
+
+        /* ====== الإشعارات ====== */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+            background: var(--success);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ====== تجاوبية محسنة ====== */
+        @media (max-width: 480px) {
+            html { font-size: 14px; }
+            .buttons-grid { grid-template-columns: 1fr; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 768px) {
+            .buttons-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* منع التمرير الأفقي */
+        body {
+            overflow-x: hidden !important;
+        }
+
+        * {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- التطبيق الرئيسي -->
+    <div class="app-container">
+        <!-- الهيدر -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="company-info">
+                    <h1> السباكة والكهرباء</h1>
+                    <p>حلول متكاملة بجودة عالية</p>
+                </div>
+            </div>
+            <div class="phone-number">
+                <i class="fas fa-phone-alt"></i> 0562194565
+            </div>
+        </header>
+
+        <!-- الأزرار الرئيسية -->
+        <div class="buttons-container">
+            <div class="buttons-grid">
+                <button class="main-button electricity" data-modal="electricity">
+                    <div class="button-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="button-text">منتجات الكهرباء</div>
+                </button>
+
+                <button class="main-button plumbing" data-modal="plumbing">
+                    <div class="button-icon">
+                        <i class="fas fa-faucet"></i>
+                    </div>
+                    <div class="button-text">منتجات السباكة</div>
+                </button>
+
+                <button class="main-button installation" data-modal="installation">
+                    <div class="button-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="button-text">خدمات التركيب</div>
+                </button>
+
+                <button class="main-button contact" data-modal="contact">
+                    <div class="button-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="button-text">معلومات المحل</div>
+                </button>
+
+                <button class="main-button rate-us" id="rateBtn">
+                    <div class="button-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="button-text">قيمنا</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- الفوتر -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <p class="footer-text">
+                    نقدم لكم أفضل الحلول في مجال السباكة والكهرباء<br>
+                    بجودة عالية وأسعار تنافسية
+                </p>
+                <div class="copyright">
+                    © 2024  السباكة والكهرباء. جميع الحقوق محفوظة.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- النوافذ المنبثقة -->
+
+    <!-- منتجات الكهرباء -->
+    <div class="modal-overlay" id="electricityModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-bolt"></i> منتجات الكهرباء</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-content">
+                <p style="text-align: center; color: #666; margin-bottom: 20px;">
+                    20 منتج كهربائي عالي الجودة
+                </p>
+                <div class="products-grid" id="electricityProducts">
+                    <!-- سيتم تعبئتها بالجافاسكريبت -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- منتجات السباكة -->
+    <div class="modal-overlay" id="plumbingModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-faucet"></i> منتجات السباكة</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-content">
+                <p style="text-align: center; color: #666; margin-bottom: 20px;">
+                    20 منتج سباكة مميز وعالي الجودة
+                </p>
+                <div class="products-grid" id="plumbingProducts">
+                    <!-- سيتم تعبئتها بالجافاسكريبت -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- خدمات التركيب -->
+    <div class="modal-overlay" id="installationModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-tools"></i> خدمات التركيب</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-content">
+                <p style="text-align: center; color: #666; margin-bottom: 20px;">
+                    10 خدمات كهرباء و 10 خدمات سباكة مع فنيين متخصصين
+                </p>
+                <div class="products-grid" id="installationProducts">
+                    <!-- سيتم تعبئتها بالجافاسكريبت -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- معلومات المحل -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-store"></i> معلومات المحل</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <div class="modal-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">العنوان</div>
+                            <div class="info-text">المعارض، الطائف 26516، السعودية</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">الهاتف / الواتساب</div>
+                            <div class="info-text">0562194565</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">البريد الإلكتروني</div>
+                            <div class="info-text">altaifaltaif774@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">أوقات العمل</div>
+                            <div class="info-text">يومياً: 8:00 ص - 10:00 م </div>
+                        </div>
+                    </div>
+
+                    <div class="map-placeholder" id="mapBtn">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <div>موقع المحل على خرائط جوجل</div>
+                        <small style="color: #666; margin-top: 8px;">الطائف - المعارض</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الإشعار -->
+    <div class="notification" id="notification">
+        <div>
+            <i class="fas fa-check-circle"></i>
+            <span id="notificationText">جاري التحميل...</span>
+        </div>
+        <button onclick="hideNotification()" style="background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;">
+            ×
+        </button>
+    </div>
+
+    <script>
+        // ====== البيانات ======
+        const electricityProducts = [
+            { name: "سلك نحاس 4 ملم" },
+            { name: "لمبة ليد 18 وات" },
+            { name: "مفتاح كهربائي 3 فاز" },
+            { name: "قاطع تيار 16 أمبير" },
+            { name: "مقبس أرضي" },
+            { name: "فيشة 3 فتحات" },
+            { name: "علبة توزيع" },
+            { name: "سلك كهرباء 2.5 ملم" },
+            { name: "لمبة فلورسنت 40 وات" },
+            { name: "مفتاح حساس" },
+            { name: "قابس تلفزيون" },
+            { name: "كابل تمديد 10 أمتار" },
+            { name: "لمبة سبوت ليد" },
+            { name: "مفتاح مروحة" },
+            { name: "فيشة هاتف" },
+            { name: "لمبة إنذار" },
+            { name: "مفتاح جرس" },
+            { name: "سلك كهرباء 6 ملم" },
+            { name: "لمبة نيون 20 وات" },
+            { name: "مفتاح إنارة" }
+        ];
+
+        const plumbingProducts = [
+            { name: "خلاط حوض ستيل" },
+            { name: "سخان مياه 50 لتر" },
+            { name: "مواسير PVC 3 بوصة" },
+            { name: "حوض ستانلس ستيل" },
+            { name: "دش استحمام" },
+            { name: "حنفية حديقة" },
+            { name: "مغسلة سيراميك" },
+            { name: "مسدس ماء" },
+            { name: "مضخة مياه" },
+            { name: "فلتر مياه" },
+            { name: "دورة مياه" },
+            { name: "مغسلة أطباق" },
+            { name: "صنبور مطبخ" },
+            { name: "مغسلة رخام" },
+            { name: "دش يدوي" },
+            { name: "مسدس بخار" },
+            { name: "مضخة صرف" },
+            { name: "مغسلة زجاج" },
+            { name: "دش علوي" },
+            { name: "مغسلة ستيل" }
+        ];
+
+        const installationServices = [
+            { name: "تركيب لمبات كهرباء", type: "electricity" },
+            { name: "تركيب مروحة سقف", type: "electricity" },
+            { name: "تركيب مكيف سبليت", type: "electricity" },
+            { name: "تركيب سخان مياه", type: "electricity" },
+            { name: "تركيب كاميرات مراقبة", type: "electricity" },
+            { name: "تركيب إنذار حريق", type: "electricity" },
+            { name: "تركيب نظام إنارة", type: "electricity" },
+            { name: "تركيب مقابس كهرباء", type: "electricity" },
+            { name: "تركيب مولد كهرباء", type: "electricity" },
+            { name: "تركيب لوحة توزيع", type: "electricity" },
+            { name: "تركيب خلاط مطبخ", type: "plumbing" },
+            { name: "تركيب دش استحمام", type: "plumbing" },
+            { name: "تركيب مغسلة حمام", type: "plumbing" },
+            { name: "تركيب سخان غاز", type: "plumbing" },
+            { name: "تركيب مضخة مياه", type: "plumbing" },
+            { name: "تركيب فلتر مياه", type: "plumbing" },
+            { name: "تركيب دورة مياه", type: "plumbing" },
+            { name: "تركيب حوض غسيل", type: "plumbing" },
+            { name: "تركيب مغسلة أطباق", type: "plumbing" },
+            { name: "تركيب نظام ري", type: "plumbing" }
+        ];
+
+        // ====== التطبيق الرئيسي ======
+        class App {
+            constructor() {
+                this.phoneNumber = "0562194565";
+                this.init();
+            }
+
+            init() {
+                this.loadAllProducts();
+                this.setupEventListeners();
+                this.setupMap();
+                this.fixViewport();
+                this.showNotification("الموقع جاهز للاستخدام", "success");
+            }
+
+            fixViewport() {
+                // إصلاح مشاكل viewport على الجوال
+                document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+                
+                window.addEventListener('resize', () => {
+                    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+                });
+
+                // منع التمرير الأفقي
+                window.addEventListener('scroll', () => {
+                    window.scrollTo(0, window.scrollY);
+                });
+
+                // إصلاح للهواتف
+                if ('ontouchstart' in window) {
+                    document.body.classList.add('touch-device');
+                }
+            }
+
+            loadAllProducts() {
+                this.loadElectricityProducts();
+                this.loadPlumbingProducts();
+                this.loadInstallationServices();
+            }
+
+            loadElectricityProducts() {
+                const container = document.getElementById('electricityProducts');
+                container.innerHTML = electricityProducts.map(product => `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-bolt icon"></i>
+                        </div>
+                        <div class="product-details">
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-actions">
+                                <button class="action-btn whatsapp-btn" onclick="app.openWhatsApp('${product.name}')">
+                                    <i class="fab fa-whatsapp"></i> واتساب
+                                </button>
+                                <button class="action-btn phone-btn" onclick="app.makeCall()">
+                                    <i class="fas fa-phone"></i> اتصال
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            loadPlumbingProducts() {
+                const container = document.getElementById('plumbingProducts');
+                container.innerHTML = plumbingProducts.map(product => `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas fa-faucet icon"></i>
+                        </div>
+                        <div class="product-details">
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-actions">
+                                <button class="action-btn whatsapp-btn" onclick="app.openWhatsApp('${product.name}')">
+                                    <i class="fab fa-whatsapp"></i> واتساب
+                                </button>
+                                <button class="action-btn phone-btn" onclick="app.makeCall()">
+                                    <i class="fas fa-phone"></i> اتصال
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            loadInstallationServices() {
+                const container = document.getElementById('installationProducts');
+                container.innerHTML = installationServices.map(service => `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fas ${service.type === 'electricity' ? 'fa-bolt' : 'fa-faucet'} icon"></i>
+                        </div>
+                        <div class="product-details">
+                            <div class="product-name">${service.name}</div>
+                            <div class="product-actions">
+                                <button class="action-btn whatsapp-btn" onclick="app.openWhatsApp('خدمة: ${service.name}')">
+                                    <i class="fab fa-whatsapp"></i> واتساب
+                                </button>
+                                <button class="action-btn phone-btn" onclick="app.makeCall()">
+                                    <i class="fas fa-phone"></i> اتصال
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            setupEventListeners() {
+                // فتح النوافذ
+                document.querySelectorAll('.main-button[data-modal]').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const modalId = button.getAttribute('data-modal') + 'Modal';
+                        this.openModal(modalId);
+                    });
+                });
+
+                // زر قيمنا
+                document.getElementById('rateBtn').addEventListener('click', () => {
+                    this.redirectToStore();
+                });
+
+                // زر الخريطة
+                document.getElementById('mapBtn').addEventListener('click', () => {
+                    this.openGoogleMaps();
+                });
+
+                // إغلاق النوافذ
+                document.querySelectorAll('.close-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        this.closeAllModals();
+                    });
+                });
+
+                // إغلاق بالنقر خارج النافذة
+                document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                    overlay.addEventListener('click', (e) => {
+                        if (e.target === overlay) {
+                            this.closeAllModals();
+                        }
+                    });
+                });
+
+                // إغلاق بالزر ESC
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeAllModals();
+                    }
+                });
+
+                // منع التمرير الأفقي
+                document.addEventListener('touchmove', (e) => {
+                    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                    e.preventDefault();
+                }, { passive: false });
+            }
+
+            openModal(modalId) {
+                this.closeAllModals();
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            closeAllModals() {
+                document.querySelectorAll('.modal-overlay').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+
+            redirectToStore() {
+                this.showNotification('صفحة المتجر قريباً...', 'info');
+                // window.location.href = 'store.html'; // أضف الرابط هنا لاحقاً
+            }
+
+            openWhatsApp(message) {
+                const text = `مرحباً، أريد الاستفسار عن: ${message}`;
+                const url = `https://wa.me/966562194565?text=${encodeURIComponent(text)}`;
+                window.open(url, '_blank');
+                this.showNotification('جاري فتح واتساب...');
+            }
+
+            makeCall() {
+                window.location.href = `tel:+966562194565`;
+                this.showNotification('جاري الاتصال بالمحل...');
+            }
+
+            openGoogleMaps() {
+                const address = "المعارض، الطائف 26516، السعودية";
+                const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+                window.open(url, '_blank');
+                this.showNotification('جاري فتح خرائط جوجل...');
+            }
+
+            setupMap() {
+                // يمكن إضافة خريطة حقيقية هنا لاحقاً
+            }
+
+            showNotification(message, type = 'success') {
+                const notification = document.getElementById('notification');
+                const text = document.getElementById('notificationText');
+
+                if (notification && text) {
+                    // تغيير اللون حسب النوع
+                    if (type === 'info') {
+                        notification.style.background = 'var(--primary)';
+                    } else if (type === 'warning') {
+                        notification.style.background = 'var(--warning)';
+                    } else {
+                        notification.style.background = 'var(--success)';
+                    }
+
+                    text.textContent = message;
+                    notification.classList.add('show');
+
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 3000);
+                }
+            }
+        }
+
+        // دالة مساعدة
+        window.hideNotification = function() {
+            const notification = document.getElementById('notification');
+            if (notification) {
+                notification.classList.remove('show');
+            }
+        };
+
+        // تهيئة التطبيق
+        document.addEventListener('DOMContentLoaded', () => {
+            window.app = new App();
+        });
+    </script>
+</body>
+</html>
