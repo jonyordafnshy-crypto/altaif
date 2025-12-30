@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <title>الطائف للسباكة والكهرباء</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
             overflow-x: hidden;
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
+            touch-action: manipulation;
         }
 
         body {
@@ -34,6 +35,7 @@
             overflow-x: hidden;
             padding: 0;
             margin: 0;
+            -webkit-overflow-scrolling: touch;
         }
 
         /* ====== الألوان الأساسية ====== */
@@ -58,7 +60,7 @@
             max-width: 100%;
             margin: 0 auto;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* ====== الهيدر ====== */
@@ -77,7 +79,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .logo-icon {
@@ -103,15 +105,31 @@
             opacity: 0.9;
         }
 
-        .phone-number {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 10px 25px;
+        /* زر الهاتف في الهيدر */
+        .header-phone-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.25);
+            color: white;
+            padding: 12px 30px;
             border-radius: 30px;
-            margin-top: 15px;
-            font-weight: 600;
+            margin-top: 10px;
+            font-weight: 700;
             font-size: 1.2rem;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: var(--transition);
+            cursor: pointer;
             backdrop-filter: blur(10px);
+            -webkit-tap-highlight-color: rgba(255,255,255,0.3);
+        }
+
+        .header-phone-btn:hover, .header-phone-btn:active {
+            background: rgba(255,255,255,0.35);
+            transform: scale(1.05);
+            border-color: rgba(255,255,255,0.5);
         }
 
         /* ====== الأزرار الرئيسية ====== */
@@ -150,6 +168,12 @@
             overflow: hidden;
             text-decoration: none;
             color: var(--dark);
+            -webkit-tap-highlight-color: rgba(106, 17, 203, 0.1);
+            touch-action: manipulation;
+        }
+
+        .main-button:active {
+            transform: translateY(-3px) scale(0.98);
         }
 
         .main-button::before {
@@ -227,6 +251,7 @@
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             animation: modalIn 0.4s ease;
+            transform: translateZ(0);
         }
 
         @keyframes modalIn {
@@ -264,9 +289,10 @@
             cursor: pointer;
             font-size: 1.2rem;
             transition: var(--transition);
+            -webkit-tap-highlight-color: rgba(255,255,255,0.3);
         }
 
-        .close-btn:hover {
+        .close-btn:hover, .close-btn:active {
             background: rgba(255,255,255,0.3);
             transform: rotate(90deg);
         }
@@ -275,6 +301,7 @@
             padding: 20px;
             overflow-y: auto;
             max-height: calc(85vh - 80px);
+            -webkit-overflow-scrolling: touch;
         }
 
         /* ====== المنتجات ====== */
@@ -292,6 +319,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid var(--gray);
+            transform: translateZ(0);
         }
 
         .product-card:hover {
@@ -348,6 +376,7 @@
             justify-content: center;
             gap: 5px;
             color: white;
+            -webkit-tap-highlight-color: rgba(255,255,255,0.3);
         }
 
         .whatsapp-btn {
@@ -356,6 +385,10 @@
 
         .phone-btn {
             background: var(--secondary);
+        }
+
+        .action-btn:active {
+            transform: translateY(-2px) scale(0.98);
         }
 
         .action-btn:hover {
@@ -421,6 +454,13 @@
             cursor: pointer;
             transition: var(--transition);
             border: 2px dashed var(--gray);
+            -webkit-tap-highlight-color: rgba(106, 17, 203, 0.1);
+        }
+
+        .map-placeholder:active {
+            background: linear-gradient(135deg, #e3e7f1, #d5dce8);
+            border-color: var(--primary);
+            transform: scale(0.98);
         }
 
         .map-placeholder:hover {
@@ -490,6 +530,7 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
             max-width: 400px;
             margin: 0 auto;
+            backdrop-filter: blur(10px);
         }
 
         .notification.show {
@@ -499,22 +540,42 @@
 
         /* ====== تجاوبية محسنة ====== */
         @media (max-width: 480px) {
-            html { font-size: 14px; }
+            html { font-size: 15px; }
             .buttons-grid { grid-template-columns: 1fr; }
             .products-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header-phone-btn {
+                padding: 12px 25px;
+                font-size: 1.1rem;
+            }
         }
 
         @media (min-width: 768px) {
             .buttons-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
-        /* منع التمرير الأفقي */
-        body {
-            overflow-x: hidden !important;
+        /* تحسينات للأجهزة التي تعمل باللمس */
+        @media (hover: none) and (pointer: coarse) {
+            .main-button:hover {
+                transform: none;
+            }
+            
+            .action-btn:hover {
+                transform: none;
+            }
+            
+            .info-item:hover {
+                transform: none;
+            }
         }
 
-        * {
-            max-width: 100%;
+        /* تحسينات للأداء */
+        .main-button, .action-btn, .close-btn, .map-placeholder {
+            will-change: transform;
         }
     </style>
 </head>
@@ -528,13 +589,15 @@
                     <i class="fas fa-tools"></i>
                 </div>
                 <div class="company-info">
-                    <h1> السباكة والكهرباء</h1>
+                    <h1>الطائف للسباكة والكهرباء</h1>
                     <p>حلول متكاملة بجودة عالية</p>
                 </div>
             </div>
-            <div class="phone-number">
-                <i class="fas fa-phone-alt"></i> 0562194565
-            </div>
+            <!-- زر الهاتف في الهيدر -->
+            <button class="header-phone-btn" id="headerPhoneBtn">
+                <i class="fas fa-phone-alt"></i> 
+                <span>0562194565</span>
+            </button>
         </header>
 
         <!-- الأزرار الرئيسية -->
@@ -588,7 +651,7 @@
                     بجودة عالية وأسعار تنافسية
                 </p>
                 <div class="copyright">
-                    © 2024  السباكة والكهرباء. جميع الحقوق محفوظة.
+                    © 2024 الطائف للسباكة والكهرباء. جميع الحقوق محفوظة.
                 </div>
             </div>
         </footer>
@@ -695,7 +758,7 @@
                         </div>
                         <div class="info-content">
                             <div class="info-label">أوقات العمل</div>
-                            <div class="info-text">يومياً: 8:00 ص - 10:00 م </div>
+                            <div class="info-text">يومياً: 8:00 ص - 10:00 م</div>
                         </div>
                     </div>
 
@@ -715,7 +778,7 @@
             <i class="fas fa-check-circle"></i>
             <span id="notificationText">جاري التحميل...</span>
         </div>
-        <button onclick="hideNotification()" style="background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;">
+        <button onclick="hideNotification()" style="background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; padding: 0 5px;">
             ×
         </button>
     </div>
@@ -801,28 +864,27 @@
             init() {
                 this.loadAllProducts();
                 this.setupEventListeners();
-                this.setupMap();
-                this.fixViewport();
                 this.showNotification("الموقع جاهز للاستخدام", "success");
+                
+                // تحسينات للأجهزة التي تعمل باللمس
+                this.improveTouchExperience();
             }
 
-            fixViewport() {
-                // إصلاح مشاكل viewport على الجوال
-                document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+            improveTouchExperience() {
+                // إضافة فعالية للمس
+                document.body.addEventListener('touchstart', function() {}, {passive: true});
                 
-                window.addEventListener('resize', () => {
-                    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+                // منع التكبير بالدبل تاب على الأزرار
+                document.addEventListener('dblclick', function(e) {
+                    if (e.target.closest('button') || e.target.closest('.action-btn')) {
+                        e.preventDefault();
+                    }
                 });
-
-                // منع التمرير الأفقي
-                window.addEventListener('scroll', () => {
-                    window.scrollTo(0, window.scrollY);
-                });
-
-                // إصلاح للهواتف
-                if ('ontouchstart' in window) {
-                    document.body.classList.add('touch-device');
-                }
+                
+                // تحسين التمرير على الجوال
+                document.addEventListener('touchmove', function(e) {
+                    // السماح بالتمرير الطبيعي
+                }, { passive: true });
             }
 
             loadAllProducts() {
@@ -898,11 +960,25 @@
             }
 
             setupEventListeners() {
+                // زر الهاتف في الهيدر
+                document.getElementById('headerPhoneBtn').addEventListener('click', () => {
+                    this.makeCall();
+                });
+
                 // فتح النوافذ
                 document.querySelectorAll('.main-button[data-modal]').forEach(button => {
                     button.addEventListener('click', (e) => {
                         const modalId = button.getAttribute('data-modal') + 'Modal';
                         this.openModal(modalId);
+                    });
+                    
+                    // تحسين الاستجابة للمس
+                    button.addEventListener('touchstart', () => {
+                        button.style.transform = 'translateY(-3px) scale(0.98)';
+                    });
+                    
+                    button.addEventListener('touchend', () => {
+                        button.style.transform = '';
                     });
                 });
 
@@ -938,12 +1014,6 @@
                         this.closeAllModals();
                     }
                 });
-
-                // منع التمرير الأفقي
-                document.addEventListener('touchmove', (e) => {
-                    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-                    e.preventDefault();
-                }, { passive: false });
             }
 
             openModal(modalId) {
@@ -984,10 +1054,6 @@
                 const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
                 window.open(url, '_blank');
                 this.showNotification('جاري فتح خرائط جوجل...');
-            }
-
-            setupMap() {
-                // يمكن إضافة خريطة حقيقية هنا لاحقاً
             }
 
             showNotification(message, type = 'success') {
